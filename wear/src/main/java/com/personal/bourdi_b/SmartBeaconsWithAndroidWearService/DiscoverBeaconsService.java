@@ -45,7 +45,7 @@ public class DiscoverBeaconsService extends Service implements SBLocationManager
     public int onStartCommand(Intent intent, int flags, int startId) {
         initializeBeacons();
         Toast.makeText(this, "My Service Started", Toast.LENGTH_LONG).show();
-        return 0;
+        return START_NOT_STICKY;
     }
 
     @Override
