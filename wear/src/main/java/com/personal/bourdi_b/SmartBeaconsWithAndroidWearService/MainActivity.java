@@ -15,9 +15,14 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        startService(new Intent(this, DiscoverBeaconsService.class));
 
         final Button bt_stop_start_service = (Button) findViewById(R.id.start_stop_service);
+        if (isMyServiceRunning(DiscoverBeaconsService.class)) {
+            bt_stop_start_service.setText(R.string.start_service);
+        } else {
+            startService(new Intent(MainActivity.this, DiscoverBeaconsService.class));
+            bt_stop_start_service.setText(R.string.stop_service);
+        }
         bt_stop_start_service.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
